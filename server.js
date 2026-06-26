@@ -22,7 +22,7 @@ app.post("/", async (req, res) => {
     const location =
       req.body.location_solved?.location ||
       req.body.data?.location_solved?.location ||
-      req.body.uplink_message?.locations?.frm_payload;
+      req.body.uplink_message?.locations?.["frm_payload"];
 
     if (!location) {
       console.log("No location found:", JSON.stringify(req.body, null, 2));
