@@ -19,8 +19,23 @@ app.get("/", (req, res) => {
 
 app.post("/", async (req, res) => {
   try {
-    console.log(JSON.stringify(req.body, null, 2));
+    const location = req.body.uplink_message?.locations?.["frm-payload"];
+
+    if (!location) {
+      console.log("No location found");
+      return res.sendStatus(200);
+    }
+
+    await db.ref("ROUTE-1").update({
+      latitude: location.latitude,
+      longitude: location.longitude,
+      lastUpdated: new Date().toLocaleTimeString(),
+      status: "Moving"
+    });
+
+    console.log("ROUTE-1 GPS Updated:", location);
     res.sendStatus(200);
+
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
