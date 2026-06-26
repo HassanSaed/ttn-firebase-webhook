@@ -18,12 +18,9 @@ app.get("/", (req, res) => {
 });
 
 app.post("/", async (req, res) => {
-  console.log(JSON.stringify(req.body, null, 2));
-  res.sendStatus(200);
-});
-    console.log("ROUTE-1 GPS Updated:", location);
+  try {
+    console.log(JSON.stringify(req.body, null, 2));
     res.sendStatus(200);
-
   } catch (err) {
     console.error(err);
     res.sendStatus(500);
