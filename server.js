@@ -36,7 +36,7 @@ app.post("/", async (req, res) => {
         second: "2-digit",
         hour12: true,
       }),
-      status: "Moving"
+      status: "Moving",
       active: true
     });
 
