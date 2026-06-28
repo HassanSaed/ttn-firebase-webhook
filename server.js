@@ -29,7 +29,13 @@ app.post("/", async (req, res) => {
     await db.ref("ROUTE-1").update({
       latitude: location.latitude,
       longitude: location.longitude,
-      lastUpdated: new Date().toLocaleTimeString(),
+      lastUpdated: new Date().toLocaleTimeString("en-MY", {
+        timeZone: "Asia/Kuala_Lumpur",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true,
+      }),
       status: "Moving"
     });
 
