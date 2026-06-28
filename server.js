@@ -37,6 +37,7 @@ app.post("/", async (req, res) => {
         hour12: true,
       }),
       status: "Moving"
+      active: true
     });
 
     console.log("ROUTE-1 GPS Updated:", location);
